@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Monzo — Home</title>
+<style>
+:root{--bg:#0a1626;--card:#12202f;--line:#1f2f40;--text:#fff;--mute:#9aa7b4;--blue:#2aa1d6;--red:#ff4f40;--green:#34d25a;--orange:#f5a623;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:"Hind Madurai","Avenir Next",-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.app{max-width:393px;margin:0 auto;padding:6px 14px 120px;position:relative;overflow:hidden}
+.sb{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 40px 0 38px;font-weight:700;font-size:20px}
+.sb .r{display:flex;gap:8px;align-items:center}
+.batt{background:#fff;color:#000;font-size:13px;font-weight:800;border-radius:8px;padding:1px 6px}
+.hdr{display:flex;align-items:center;gap:8px;margin:8px 0 22px}
+.av{width:39px;height:39px;border-radius:50%;background:linear-gradient(135deg,#d9a98a,#7a5a48);flex:none;overflow:hidden;position:relative}
+.av:after{content:"";position:absolute;left:11px;top:7px;width:17px;height:17px;border-radius:50%;background:#f0c9ae;box-shadow:0 18px 0 6px #5b6b8a}
+.pill{height:39px;border-radius:20px;border:1.5px solid #1d3a52;background:var(--card);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px}
+.pill.perk{width:104px;margin-right:auto;margin-left:2px}
+.pill.ic{width:39px}
+.pill.plus{width:39px;background:#2395c4;border-color:#35b3e6}
+.sc{display:flex;gap:8px;margin:0 -14px 14px;padding:0 14px;overflow-x:auto;scrollbar-width:none}
+.sc::-webkit-scrollbar{display:none}
+.mini{flex:none;width:153px;height:111px;border-radius:20px;background:var(--card);padding:14px 12px;position:relative}
+.mini .ico{position:absolute;right:12px;top:12px;color:var(--mute)}
+.amt{font-size:22px;font-weight:700;letter-spacing:-.3px;margin-top:6px}
+.amt small{font-size:14px;font-weight:700}
+.lbl{font-size:13.5px;color:var(--mute);margin-top:1px}
+.dots{display:flex;gap:4px;align-items:center;margin-top:12px}
+.sq{width:18px;height:18px;border-radius:5px;background:var(--red)}
+.sq.s{background:linear-gradient(#e5b25d,#a8672f)}.sq.b{background:#2878c4}
+.dots span{font-size:12px;color:var(--mute);margin-left:3px}
+.main{background:var(--red);border-radius:20px;height:128px;padding:14px 14px;position:relative;margin-bottom:16px}
+.logo{font-size:30px;font-weight:800;letter-spacing:-.5px;line-height:1}
+.bal{position:absolute;right:15px;top:10px;text-align:right}
+.bal b{font-size:30px;font-weight:700;display:block;line-height:1.15}
+.bal b small{font-size:20px}
+.bal span{position:absolute;right:0;top:40px;font-size:13.5px;font-weight:600;color:#ffe4df;white-space:nowrap}
+.sort{position:absolute;left:14px;top:56px;font-size:13.5px;font-weight:700;color:#ffe9e5;display:flex;gap:6px;align-items:center}
+.btns{position:absolute;left:11px;right:11px;bottom:12px;display:flex;gap:7px;align-items:center}
+.btn{height:29px;border-radius:15px;background:#8c3330;display:flex;align-items:center;gap:6px;padding:0 10px;font-weight:700;font-size:14.5px}
+.btn.more{margin-left:auto;width:29px;padding:0;justify-content:center}
+.panel{background:var(--card);border-radius:20px;padding:14px 14px 12px;margin-bottom:16px}
+.ph{display:flex;align-items:center;justify-content:space-between;font-weight:700;font-size:17px;margin-bottom:6px;color:#fff}
+.ph .ri{display:flex;gap:14px;align-items:center;color:var(--blue)}
+.row{display:flex;align-items:center;height:50px;border-bottom:1px solid var(--line)}
+.row:last-of-type{border-bottom:0}
+.ra{width:29px;height:29px;border-radius:50%;margin-right:15px;flex:none;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.rn{font-size:16.5px;font-weight:500;line-height:1.1}
+.rn i{display:block;font-style:normal;font-size:13px;color:var(--mute);margin-top:2px}
+.rv{margin-left:auto;font-size:22px;font-weight:500;letter-spacing:-.3px}
+.rv small{font-size:14px;font-weight:700}
+.rv.g{color:var(--green)}
+.see{color:var(--blue);font-size:17px;font-weight:500;margin-top:12px;display:block}
+.tiles{display:flex;gap:8px;margin:12px -14px 0;padding:0 14px;overflow:hidden}
+.tile{flex:none;width:139px;height:158px;border-radius:14px;position:relative;padding:8px}
+.tile .t{position:absolute;left:10px;bottom:6px;font-size:14px;font-weight:600;color:#cfd8e0;line-height:1.25}
+.t1{background:radial-gradient(circle at 50% 55%,#fff3b0 0,#f7b231 12%,#c46a21 35%,#4a3a30 80%)}
+.t2{background:linear-gradient(#2e7cc0,#1a5d99)}
+.t3{background:#27363f}
+.pb{width:36px;height:36px;border-radius:9px;background:rgba(60,45,30,.8);display:flex;align-items:center;justify-content:center}
+.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));width:min(363px,calc(100% - 28px));height:55px;border-radius:28px;background:rgba(25,60,100,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1.5px solid #1d4b73;display:flex;align-items:center;padding:0 3px}
+.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:12px;font-weight:700;color:#e8eef4;height:48px;justify-content:center;border-radius:24px}
+.ni.on{color:#37b0ea;background:rgba(255,255,255,.18);flex:1.15}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="sb"><span>11:03</span><span class="r">
+    <svg width="22" height="14" viewBox="0 0 22 14" fill="#fff"><rect x="0" y="9" width="4" height="5" rx="1"/><rect x="6" y="6" width="4" height="8" rx="1"/><rect x="12" y="3" width="4" height="11" rx="1"/><rect x="18" y="0" width="4" height="14" rx="1" opacity=".4"/></svg>
+    <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M2 5a11 11 0 0 1 16 0M5 8.5a6.5 6.5 0 0 1 10 0"/><circle cx="10" cy="12" r="1.3" fill="#fff"/></svg>
+    <span class="batt">100</span></span></div>
+
+  <div class="hdr">
+    <div class="av"></div>
+    <div class="pill perk">New perk</div>
+    <div class="pill ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M3 9h18v4H3zM4 14h7v7H6a2 2 0 0 1-2-2zM13 14h7v5a2 2 0 0 1-2 2h-5zM11 9V7.5C11 5 8 3.5 7 5s.5 4 4 4zM13 9V7.5C13 5 16 3.5 17 5s-.5 4-4 4z"/></svg></div>
+    <div class="pill ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg></div>
+    <div class="pill plus"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg></div>
+  </div>
+
+  <div class="sc">
+    <div class="mini"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 2 8v2h20V8zM4 11h3v6H4zM10.5 11h3v6h-3zM17 11h3v6h-3zM2 19h20v2H2z"/></svg>
+      <div class="amt">£34<small>.04</small></div><div class="lbl">Personal balance</div>
+      <div class="dots"><div class="sq"></div><div class="sq s"></div><div class="sq b"></div><span>+2</span></div></div>
+    <div class="mini"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="10" width="3" height="10" rx="1"/><rect x="10.5" y="4" width="3" height="16" rx="1"/><rect x="17" y="12" width="3" height="8" rx="1"/></svg>
+      <div class="amt">£169<small>.28</small></div><div class="lbl">Spent this month</div>
+      <div class="dots"><div class="sq"></div></div></div>
+    <div class="mini"><div class="amt" style="color:var(--orange)">-£1<small>.12</small></div><div class="lbl">Left over</div>
+      <div class="lbl" style="margin-top:22px">Until 31 Oct</div></div>
+  </div>
+
+  <div class="main">
+    <div class="logo">monzo</div>
+    <div class="bal"><b>£33<small>.82</small></b><span>Balance</span></div>
+    <div class="sort"><svg width="20" height="20" viewBox="0 0 24 24" fill="#ffe9e5"><path d="M12 3 2 8v2h20V8zM4 11h3v6H4zM10.5 11h3v6h-3zM17 11h3v6h-3zM2 19h20v2H2z"/></svg>04-00-04 • 93014915</div>
+    <div class="btns">
+      <div class="btn"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M12 6v12M6 12h12" stroke="#8c3330" stroke-width="2.6" stroke-linecap="round"/></svg>Add money</div>
+      <div class="btn"><svg width="22" height="18" viewBox="0 0 24 18" fill="#fff"><rect width="24" height="18" rx="3"/><rect y="4" width="24" height="3" fill="#8c3330"/><rect x="3" y="11" width="6" height="3" rx="1" fill="#8c3330"/></svg>Card</div>
+      <div class="btn more"><svg width="18" height="4" viewBox="0 0 18 4" fill="#fff"><circle cx="2" cy="2" r="2"/><circle cx="9" cy="2" r="2"/><circle cx="16" cy="2" r="2"/></svg></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="ph"><span>Activity</span><span class="ri">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M8 2.5v4M16 2.5v4M3 9.5h18"/><rect x="6.5" y="12.5" width="3" height="3" fill="currentColor" stroke="none"/></svg>
+      <svg width="18" height="4" viewBox="0 0 18 4" fill="currentColor"><circle cx="2" cy="2" r="2"/><circle cx="9" cy="2" r="2"/><circle cx="16" cy="2" r="2"/></svg></span></div>
+    <div class="row"><div class="ra" style="background:#0e6f84;color:#e7b6d3">NS</div><div class="rn">N Shumiacher<i>Monzo-CVGMK</i></div><div class="rv g">+10<small>.00</small></div></div>
+    <div class="row"><div class="ra" style="background:#fff"><svg width="16" height="18" viewBox="0 0 24 24" fill="#000"><path d="M16.4 12.6c0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9s-1.9-.9-3.1-.8c-1.6 0-3.1.9-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.5.8 1.2 1.7 2.4 3 2.4 1.2 0 1.7-.8 3.100-.8s1.800.8 3.100.8 2.100-1.100 2.900-2.300c.9-1.300 1.300-2.600 1.300-2.700 0 0-2.500-1-2.500-3.900zM14 5.500c.7-.8 1.100-1.900 1-3-1 0-2.100.7-2.800 1.500-.6.700-1.100 1.800-1 2.900 1.100.1 2.100-.6 2.800-1.400z"/></svg></div><div class="rn">Apple</div><div class="rv">6<small>.99</small></div></div>
+    <div class="row"><div class="ra" style="background:radial-gradient(circle at 40% 40%,#e9e4ea 0,#d8d0d8 30%,#2a2230 32%,#a52a3a 70%)"></div><div class="rn">Anastasiia Kovalchuk</div><div class="rv">105<small>.00</small></div></div>
+    <a class="see">See all</a>
+  </div>
+
+  <div class="panel">
+    <div class="ph"><span>Pots <span style="color:var(--mute)">• £0.00</span></span><span class="ri"><svg width="18" height="4" viewBox="0 0 18 4" fill="currentColor"><circle cx="2" cy="2" r="2"/><circle cx="9" cy="2" r="2"/><circle cx="16" cy="2" r="2"/></svg></span></div>
+    <div class="tiles">
+      <div class="tile t1"><div class="pb"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d7cdc2" stroke-width="3.5"><circle cx="12" cy="12" r="8"/></svg></div><div class="t" style="bottom:2px">pot<br>£0.00</div></div>
+      <div class="tile t2"><div class="t">house<br>£0.00</div></div>
+      <div class="tile t3"></div>
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+  <div class="ni on"><svg width="28" height="28" viewBox="0 0 24 24" fill="#37b0ea"><path d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z"/></svg>Home</div>
+  <div class="ni"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 22V12C12 7 8 5 3 5c0 5 3 8 9 8M12 14c0-5 3-8 9-9 0 5-3 8-9 9z"/></svg>Grow</div>
+  <div class="ni"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h17M16 4l4 4-4 4M21 16H4M8 12l-4 4 4 4"/></svg>Payments</div>
+  <div class="ni"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round"><path d="M8.500 9a3.600 3.600 0 1 1 5.200 3.200c-1.200.7-1.700 1.300-1.700 2.800"/><circle cx="12" cy="19" r=".6" fill="#fff"/></svg>Help</div>
+</div>
+</body>
+</html>
